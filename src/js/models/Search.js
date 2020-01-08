@@ -9,7 +9,7 @@ export default class Search{
            const res = await axios (`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${privateKey}`);
            
             this.result = res.data.data.results;
-            this.filteredResult = this.filterResult(this.result);
+            this.filteredResult = await this.filterResult(this.result);
             console.log()
             //filteredresult promise düşüyor.
     }
@@ -21,13 +21,13 @@ export default class Search{
      let heros = [];
      //window.h = heros;
      //console.log(results[0][3].thumbnail.path)
-     let imgNotFoundCount = results[0].filter(word => word.thumbnail.path == `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`).length;
+     let imgNotFoundCount = results[0].filter(word => word.thumbnail.path == `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`).length+1;
      this.gifyResult = await this.gify(imgNotFoundCount);
      let count=0;
      //console.log(this.gifyResult[0].images.original.url);  
      results[0].forEach( (val) =>  {   
         // [""0""].images.original.url
-       if(val.thumbnail.path == `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available` )
+       if(val.thumbnail.path == `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available` || val.name == "Aegis (Trey Rollins)")
        {
          //  console.log(this.gifyResult[count].images.original.url)
             heros.push({

@@ -19,7 +19,7 @@ export const renderRandomCoverImages = randomItems =>{
 
 export const renderHeroesPhotosToGallery = items => {
     let markup = `<div class="row"> `;
-   // console.log(items)
+    //console.log(items)
     items.forEach(function(val, i){
        
        if(i % 4 == 0 && i !== 0) 
@@ -32,6 +32,7 @@ export const renderHeroesPhotosToGallery = items => {
         <img class="img-fluid img-thumbnail" src="${val.img}" alt="${val.name}" id="${val.id}">
         </div>`;
     });
-  //  console.log(markup);
+    
+    //console.log(markup);
   elements.galleryImg.insertAdjacentHTML("afterbegin",markup);
 }

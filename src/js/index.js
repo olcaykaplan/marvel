@@ -10,8 +10,8 @@ const setUpThePage = async () => {
          await state.search.getResult();
          state.list = new List();
          
-
         var randomItems =  state.list.randomlyHomepageCoverImages(state.search.result)
+        
         listView.renderRandomCoverImages(randomItems);
         listView.renderHeroesPhotosToGallery(state.search.filteredResult)
         } catch (error) {
