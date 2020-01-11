@@ -7,12 +7,14 @@ body{
 background-color: #FFFF;
 
 }
-
+html {
+    scroll-behavior: smooth;
+  }
 #home{
     height: 100vh; 
 
 }
-/*--------HEADER-----*/
+/*--------HEADER--------*/
 .navbar-brand img{
     width: 150px;
     height: auto;
@@ -32,22 +34,56 @@ nav li a:hover{
 nav li:last-child{
     margin-right: 50px;
 }
+/*--------Home IMG--------*/
 .homerow img{
     width: 100%;
     height: 80vh; 
     padding: 0px;
+    margin: 0px;
     background-size: cover;
 }
 
-.coverImagDiv{
+/* .coverImagDiv{
     padding: 0px;
     margin: 0px;
     text-align: center;
+   
 }
 .coverImagDiv img{
-    width: 400px;
-    height: 600px; /*1vh = 1% of browser screen height*/
+    width: 100%;
+    height: 600px; /*1vh = 1% of browser screen height*/   
+    /*padding: 0px;
+   
+    }
+     */
+/*--------Gallery--------*/
+h2{
+    text-align: center;
+    text-transform:uppercase;
+    margin-top: 50px;
+    font-size: 55px;
+}
+.gallery,
+.galleryImgDiv{text-align: center;}
+.galleryImgDiv img{
+    width: 200px;
+    height: 400px; /*1vh = 1% of browser screen height*/   
+    margin: 0px auto;
     
-    padding: 0px;
-    margin: 20px 40px;
+}
+
+.odd{
+background-color: #f4f4f4;
+text-align: center;
+}
+.pair{ background-color: #fff;
+    text-align: center;}
+/* CHARACTER*/
+
+.character img{
+    background-size: cover;
+    width: 100%;
+}
+.characterForm{
+    text-align: center;
 }

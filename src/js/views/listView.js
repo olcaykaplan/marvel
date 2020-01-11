@@ -18,7 +18,9 @@ export const renderRandomCoverImages = randomItems =>{
 }
 
 export const renderHeroesPhotosToGallery = items => {
-    let markup = `<div class="row"> `;
+   let rowCount=1;
+    let markup = ` <h2>gallery</h2>
+    <div class="row col-12 odd">`;
     //console.log(items)
     items.forEach(function(val, i){
        
@@ -26,10 +28,18 @@ export const renderHeroesPhotosToGallery = items => {
         {
             
             markup += `</div>`;
-            if(i !==20 ) markup += `<div class = "row"> `;
+            
+            if(i !==20 )
+            { 
+                if(rowCount > 1 )   { markup += `<div class = "row col-12 pair">`;}
+                else  {markup += `<div class = "row col-12 odd">`;}
+            }
+            rowCount == 4 ? rowCount = 2 :  rowCount++;
+           
         }
-        markup += `<div class="col-3 coverImagDiv">
-        <img class="img-fluid img-thumbnail" src="${val.img}" alt="${val.name}" id="${val.id}">
+        
+        markup += `<div class="col-3 galleryImgDiv">
+        <img class="img-fluid img-thumbnail" src="${val.img}" alt="${val.name}" data-id="${val.id}">
         </div>`;
     });
     

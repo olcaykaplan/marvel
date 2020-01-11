@@ -7,11 +7,24 @@ export default class Search{
     async getResult(){
            
            const res = await axios (`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${privateKey}`);
-           
+           //GET /v1/public/characters/{characterId}
             this.result = res.data.data.results;
             this.filteredResult = await this.filterResult(this.result);
             console.log()
             //filteredresult promise düşüyor.
+    }
+    async getCharacterbyID(id){
+      const charaacterRes = await axios (`http://gateway.marvel.com/v1/public/characters/${id}?ts=1&apikey=${publicKey}&hash=${privateKey}`);
+      this.character={
+        id:charaacterRes.data.data.results[0].id,
+        name: charaacterRes.data.data.results[0].name,
+        description: charaacterRes.data.data.results[0].description,
+        img:charaacterRes.data.data.results[0].thumbnail.path+charaacterRes.data.data.results[0].thumbnail.extension,
+        comic: charaacterRes.data.data.results[0].comics.items[0].name,
+        series:charaacterRes.data.data.results[0].series.items.map(e => e.name),
+      };
+      console.log(this.character);
+      
     }
     
      async filterResult(...results)
