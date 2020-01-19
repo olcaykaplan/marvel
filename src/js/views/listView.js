@@ -39,7 +39,7 @@ export const renderHeroesPhotosToGallery = items => {
         }
         
         markup += `<div class="col-3 galleryImgDiv">
-        <img class="img-fluid img-thumbnail" src="${val.img}" alt="${val.name}" data-id="${val.id}">
+        <img class="img-fluid img-thumbnail" src="${val.img}" alt="${val.name}" data-id="${val.id}"> 
         </div>`;
     });
     

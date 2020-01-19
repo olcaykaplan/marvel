@@ -1,11 +1,13 @@
 import Search from './models/Search';
 import List from './models/List';
 import * as listView from './views/listView';
+import * as characterView from './views/characterView';
+
 import {elements} from './views/base';
 const state = {};
  window.state = state;
 
-const setUpThePage = async () => {
+const setUpHomePage = async () => {
     try {
          state.search = new Search();
          await state.search.getResult();
@@ -22,14 +24,19 @@ const setUpThePage = async () => {
 
 const control = async (id) => {
   
-     state.search.getCharacterbyID(id);
-     console.log(state.search.character);
+     await state.search.getCharacterbyID(id);
+    
+     characterView.setUpCharacterView(state.search.character);
 };
 
-//deneme first command
 elements.galleryImg.addEventListener('click', e=>{
-    const id = e.target.closest('.img-fluid').dataset.id;
-    control(id);
+    //characterView.openCharacterViewPage();
+     const id = e.target.closest('.img-fluid').dataset.id;
+     control(id);
 });
-
-setUpThePage();
+// elements..addEventListener('click', e=>{
+//     //characterView.openCharacterViewPage();
+//      const id = e.target.closest('.img-fluid').dataset.id;
+//      control(id);
+// });
+setUpHomePage();

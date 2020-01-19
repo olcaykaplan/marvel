@@ -15,16 +15,15 @@ export default class Search{
     }
     async getCharacterbyID(id){
       const charaacterRes = await axios (`http://gateway.marvel.com/v1/public/characters/${id}?ts=1&apikey=${publicKey}&hash=${privateKey}`);
-      this.character={
+      this.character = {
         id:charaacterRes.data.data.results[0].id,
         name: charaacterRes.data.data.results[0].name,
         description: charaacterRes.data.data.results[0].description,
-        img:charaacterRes.data.data.results[0].thumbnail.path+charaacterRes.data.data.results[0].thumbnail.extension,
+        img:charaacterRes.data.data.results[0].thumbnail.path+'.'+charaacterRes.data.data.results[0].thumbnail.extension,
         comic: charaacterRes.data.data.results[0].comics.items[0].name,
         series:charaacterRes.data.data.results[0].series.items.map(e => e.name),
       };
-      console.log(this.character);
-      
+
     }
     
      async filterResult(...results)
